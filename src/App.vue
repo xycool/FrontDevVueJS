@@ -1,5 +1,5 @@
 <template>
-  <Ex02_02/>
+  <Ex02_05/>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
 // import Ex1_12 from "./components/Ex1_12.vue"
 //  import Act1_01 from "./components/Act1_01.vue"
 // import Ex02_01 from './components/EX02/Ex02_01.vue';
-import Ex02_02 from './components/EX02/Ex02_02.vue';
+import Ex02_05 from './components/EX02/Ex02_05.vue';
 
 export default {
   components: {
@@ -26,7 +26,7 @@ export default {
     // Ex1_06,
     // Ex1_12,
     // Act1_01
-    Ex02_02
+    Ex02_05
   },
 };
 </script>
