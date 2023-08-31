@@ -7,12 +7,36 @@
         placeholder="Search with method"
         v-model="input"
         @keyup="searchMethod"
+      />
+      <ul>
+        <li v-for="(item, i) in methodFilterList" :key="i">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <input 
+        type="text"
+        placeholder="Search with computed"
+        v-model="input2"
         />
-        <ul>
-          <li v-for="(item, i) in methodFilterList" :key="i">
-            {{ item }}
-          </li>
-        </ul>
+      <ul>
+        <li v-for="(item, i) in computedList" :key="i">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <input 
+        type="text"
+        placeholder="Search with watcher"
+        v-model="input3"
+        />
+      <ul>
+        <li v-for="(item, i) in watchFilterList" :key="i">
+          {{ item }}
+        </li>
+      </ul>
     </div>
   </div> 
 </template>
@@ -33,13 +57,27 @@ export default {
       ],
       // Method
       input: '',
-      methodFilterList: []
+      input2: '',
+      input3: '',
+      methodFilterList: [],
+      watchFilterList: []
     }
   },
   watch: {
-    'product.price'() {
-      this.discount++
+    input3: {
+      handler() {
+        this.watchFilterList = this.frameworkList.filter(item =>
+        item.toLowerCase().includes(this.input3.toLowerCase()))
+      },
+      immediate: true,
     },
+  },
+  computed: {
+    computedList() {
+      return this.frameworkList.filter(item =>
+        item.toLowerCase().includes(this.input2.toLowerCase())
+      )
+    }
   },
   methods: {
     searchMethod(e) {
