@@ -1,5 +1,6 @@
 <template>
-  <Ex02_06/>
+  <MessageFeed :messages="messages" />
+  <MessageEditor @send="onSend($event)" />  
 </template>
 
 <script>
@@ -14,8 +15,9 @@
 // import Ex1_12 from "./components/Ex1_12.vue"
 //  import Act1_01 from "./components/Act1_01.vue"
 // import Ex02_01 from './components/EX02/Ex02_01.vue';
-import Ex02_06 from './components/EX02/Ex02_06.vue';
-
+// import Ex02_06 from './components/EX02/Ex02_06.vue';
+import MessageFeed from './components/MessageFeed.vue';
+import MessageEditor from './components/MessageEditor.vue';
 export default {
   components: {
     // Ex1_01,
@@ -26,8 +28,20 @@ export default {
     // Ex1_06,
     // Ex1_12,
     // Act1_01
-    Ex02_06
+    // Ex02_06
+    MessageEditor,
+    MessageFeed
   },
+  data() {
+    return {
+      messages: []
+    }
+  },
+  methods: {
+    onSend(event) {
+      this.messages = [...this.messages, event]
+    }
+  }
 };
 </script>
 <style lang="scss">
